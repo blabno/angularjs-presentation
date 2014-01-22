@@ -9,6 +9,14 @@
 </div>
 <input ng-model="user.name" placeholder="Type your nam here"/>
 <button ng-click="greet(user.name)">Greet</button>
+
+<table>
+    <tr ng-repeat="user in users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+</table>
+
 <script src="bower_components/angular/angular.js"></script>
 <script src="app/TodoCtrl.js"></script>
 </body>
