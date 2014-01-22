@@ -1,4 +1,4 @@
-var todoApp = angular.module("TodoApp", []).controller("TodoCtrl", function ($scope, UserDAO)
+var todoApp = angular.module("TodoApp", ["markdownModule"]).controller("TodoCtrl", function ($scope, UserDAO)
 {
     $scope.user = {name: ""};
     $scope.users = [];

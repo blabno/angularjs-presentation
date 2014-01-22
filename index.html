@@ -26,8 +26,17 @@
     </tr>
 </table>
 
+<div markdown>
+#Some static markdown
+</div>
+
+<div markdown="markdownSource"></div>
+<textarea ng-model="markdownSource"></textarea>
+
 <script src="bower_components/angular/angular.js"></script>
+<script src="vendor/showdown.js"></script>
 <script src="app/TodoCtrl.js"></script>
 <script src="app/UserDAO.js"></script>
+<script src="app/markdown.js"></script>
 </body>
 </html>
