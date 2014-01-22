@@ -4,7 +4,10 @@
     <title>AngularJS presentation</title>
 </head>
 <body ng-app ng-controller="TodoCtrl">
-Hello {{ user.name }}
+<div>
+    Hello {{ user.name }}
+</div>
+<input ng-model="user.name" placeholder="Type your nam here"/>
 <script src="bower_components/angular/angular.js"></script>
 <script src="app/TodoCtrl.js"></script>
 </body>

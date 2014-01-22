@@ -1,4 +1,4 @@
 function TodoCtrl($scope)
 {
-    $scope.user = {name: "world"};
+    $scope.user = {name: ""};
 }
