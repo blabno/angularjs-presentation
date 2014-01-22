@@ -10,9 +10,13 @@
 </div>
 <form class="row col-lg-4 form-inline" ng-submit="greet(user.name)">
     <div class="form-group">
-        <input ng-model="user.name" placeholder="Type your nam here" class="form-control" required/>
+        <input ng-model="user.name" placeholder="Type your nam here" class="form-control" ng-required="!allowEmptyName"/>
     </div>
     <button class="btn btn-primary">Greet</button>
+    <div class="form-group">
+        <input id="allowEmptyName" type="checkbox" ng-model="allowEmptyName"/>
+        <label for="allowEmptyName">Allow empty name</label>
+    </div>
 </form>
 
 <table class="table">
