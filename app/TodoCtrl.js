@@ -6,10 +6,16 @@ var todoApp = angular.module("TodoApp", []).controller("TodoCtrl", function ($sc
     $scope.greet = function (name)
     {
         alert("Hello " + name);
+        UserDAO.save({name: name, email: name + "@example"}).success(refreshUsers);
     };
 
-    UserDAO.get().success(function (users)
+    function refreshUsers()
     {
-        $scope.users = users;
-    });
+        UserDAO.get().success(function (users)
+        {
+            $scope.users = users;
+        });
+    }
+
+    refreshUsers();
 });

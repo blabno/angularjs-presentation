@@ -50,15 +50,31 @@ HttpServer.prototype.parseUrl_ = function (urlString)
     parsed.pathname = url.resolve('/', parsed.pathname);
     return url.parse(url.format(parsed), true);
 };
+var users = [
+    {name: "John", email: "john@example.com"},
+    {name: "Chris", email: "chris@example.com"}
+];
 HttpServer.prototype.handleRequest_ = function (req, res)
 {
     if (req.url.match(/\/api\/user/)) {
-        res.write(JSON.stringify([
-            {name: "John", email: "john@example.com"},
-            {name: "Chris", email: "chris@example.com"}
-        ]));
-        res.end();
-        return;
+        if ("GET" == req.method) {
+            res.write(JSON.stringify(users));
+            res.end();
+            return;
+        } else if ("POST" == req.method) {
+            var body = "";
+            req.on('data', function (data)
+            {
+                body += data;
+            });
+            req.on('end', function ()
+            {
+                users.push(JSON.parse(body));
+                res.writeHead(200, {'Content-Type': 'text/plain'});
+                res.end('okay');
+            });
+            return;
+        }
     }
 
     var logEntry = req.method + ' ' + req.url;
