@@ -3,11 +3,12 @@
 <head>
     <title>AngularJS presentation</title>
 </head>
-<body ng-app ng-controller="TodoCtrl">
+<body ng-app="TodoApp" ng-controller="TodoCtrl">
 <div>
     Hello {{ user.name }}
 </div>
 <input ng-model="user.name" placeholder="Type your nam here"/>
+<button ng-click="greet(user.name)">Greet</button>
 <script src="bower_components/angular/angular.js"></script>
 <script src="app/TodoCtrl.js"></script>
 </body>
