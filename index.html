@@ -2,15 +2,20 @@
 <html>
 <head>
     <title>AngularJS presentation</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
-<body ng-app="TodoApp" ng-controller="TodoCtrl">
-<div>
+<body ng-app="TodoApp" ng-controller="TodoCtrl" class="container">
+<div class="jumbotron">
     Hello {{ user.name }}
 </div>
-<input ng-model="user.name" placeholder="Type your nam here"/>
-<button ng-click="greet(user.name)">Greet</button>
+<form class="row col-lg-4 form-inline">
+    <div class="form-group">
+        <input ng-model="user.name" placeholder="Type your nam here" class="form-control"/>
+    </div>
+    <button ng-click="greet(user.name)" class="btn btn-primary">Greet</button>
+</form>
 
-<table>
+<table class="table">
     <tr ng-repeat="user in users">
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
