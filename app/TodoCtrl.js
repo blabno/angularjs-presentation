@@ -5,7 +5,6 @@ var todoApp = angular.module("TodoApp", ["markdownModule"]).controller("TodoCtrl
 
     $scope.greet = function (name)
     {
-        alert("Hello " + name);
         UserDAO.save({name: name, email: name + "@example"}).success(refreshUsers);
     };
 
