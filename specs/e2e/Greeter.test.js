@@ -5,15 +5,38 @@ describe("Greeter", function ()
         browser().navigateTo("/api/reset");
     });
 
-    it("should ...", function ()
+    describe("on enter /", function ()
+    {
+        beforeEach(function ()
+        {
+            browser().navigateTo("/");
+        });
+        it("should show 2 users", function ()
+        {
+            expect(repeater("table tr").count()).toBe(2);
+        });
+    });
+
+    describe("on greeting Jack", function ()
+    {
+        beforeEach(function ()
+        {
+            browser().navigateTo("/");
+        });
+        it("should show 3 users", function ()
+        {
+            input("user.name").enter("Jack");
+            element("button").click();
+            expect(repeater("table tr").count()).toBe(3);
+        });
+    });
+
+    it("should be able to add new user", function ()
     {
         browser().navigateTo("/");
         expect(repeater("table tr").count()).toBe(2);
-        pause();
         input("user.name").enter("Jack");
-        pause();
         element("button").click();
-        pause();
         expect(repeater("table tr").count()).toBe(3);
     });
 });
