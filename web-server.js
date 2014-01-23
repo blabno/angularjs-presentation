@@ -50,19 +50,25 @@ HttpServer.prototype.parseUrl_ = function (urlString)
     parsed.pathname = url.resolve('/', parsed.pathname);
     return url.parse(url.format(parsed), true);
 };
-var users = [
-    {name: "John", email: "john@example.com"},
-    {name: "Chris", email: "chris@example.com"}
-];
+var users;
+function reset()
+{
+    users = [
+        {name: "John", email: "john@example.com"},
+        {name: "Chris", email: "chris@example.com"}
+    ]
+}
+reset();
 HttpServer.prototype.handleRequest_ = function (req, res)
 {
+    var body;
     if (req.url.match(/\/api\/user/)) {
         if ("GET" == req.method) {
             res.write(JSON.stringify(users));
             res.end();
             return;
         } else if ("POST" == req.method) {
-            var body = "";
+            body = "";
             req.on('data', function (data)
             {
                 body += data;
@@ -75,6 +81,11 @@ HttpServer.prototype.handleRequest_ = function (req, res)
             });
             return;
         }
+    } else if (req.url.match(/\/api\/reset/)) {
+        reset();
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('okay');
+        return;
     }
 
     var logEntry = req.method + ' ' + req.url;
